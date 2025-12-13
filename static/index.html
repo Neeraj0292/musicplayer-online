@@ -1,1 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YouTube Music Clone</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div id="app">
 
+    <div id="downloadToast" class="download-toast">
+      <span class="toast-icon">⬇</span>
+      <span class="toast-message">Starting download...</span>
+    </div>
+
+    <header class="topbar">
+      <div class="brand">Online Music Player</div>
+
+      <div class="searchbox">
+        <input id="search" type="search" placeholder="Search songs, artists..." autocomplete="off">
+        <div id="suggestions" class="suggestions"></div>
+        <div id="searchResults" class="search-results-dropdown"></div>
+      </div>
+
+      <nav class="nav">
+        <button id="trendingBtn" class="pill-btn">Latest</button>
+      </nav>
+    </header>
+
+    <main class="main">
+
+      <div class="left">
+        <h3 class="section-title">Trending Punjabi Songs</h3>
+        <ul id="results" class="list"></ul>
+      </div>
+
+      <div class="center-right">
+        <section class="center">
+          <div id="playerCard" class="player-card glass-card">
+            <img id="thumb" src="" alt="" class="thumb">
+            <div class="meta">
+              <div id="title" class="title">Not playing</div>
+              <div id="artist" class="artist"></div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <audio id="audio" controls preload="none"></audio>
+
+            <div class="buttons">
+              <button id="prev" class="ctrl-btn" title="Previous">⏮</button>
+              <button id="play" class="ctrl-btn play-btn" title="Play/Pause">▶</button>
+              <button id="next" class="ctrl-btn" title="Next">⏭</button>
+            </div>
+            
+            <div class="download-container">
+              <button id="download" class="download-btn" title="Download current song">
+                <span class="download-icon">⬇</span>
+                <span class="download-text">Download Song</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="recommendations-section">
+          <h4 class="section-title">Recommendations</h4>
+          <ul id="recs" class="list"></ul>
+        </section>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
