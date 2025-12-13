@@ -1,0 +1,6 @@
+Flask==2.3.2
+ytmusicapi==0.24.0
+yt-dlp==2025.11.01
+requests==2.31.0
+gunicorn
+
