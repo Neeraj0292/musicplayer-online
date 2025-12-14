@@ -9,6 +9,14 @@ app = Flask(__name__, static_folder="static", static_url_path="/static")
 # Initialize YTMusic without cache=True (compatibility)
 yt = YTMusic()
 
+ydl_opts = {
+    "format": "bestaudio",
+    "quiet": True,
+    "skip_download": True,
+    "cookiefile": "cookies.txt",
+    "nocheckcertificate": True,
+}
+
 # simple in-memory history (server-side), frontend also stores in localStorage
 LISTEN_HISTORY = []
 
