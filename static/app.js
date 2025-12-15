@@ -185,7 +185,6 @@ async function playTrack(item, skipQueue = false){
   hideLists();
 
   if(!skipQueue) {
-    // Check if this exact song is already in queue to avoid duplicates
     const exists = queue.findIndex(q => q.videoId === item.videoId);
     if(exists === -1) {
       queue.push(item);
@@ -196,9 +195,21 @@ async function playTrack(item, skipQueue = false){
   }
 
   setNowPlaying(item);
-  const trackUrl = `/play?videoId=${encodeURIComponent(item.videoId)}`;
-  audio.src = trackUrl;
-  try { await audio.play(); } catch(e){ /* user gesture may be required */ }
+  
+  try {
+    // Get direct audio URL from backend
+    const res = await fetch(`/play?videoId=${encodeURIComponent(item.videoId)}`);
+    const data = await res.json();
+    
+    if(data.url) {
+      audio.src = data.url;
+      await audio.play();
+    } else {
+      console.error('No audio URL received');
+    }
+  } catch(e) {
+    console.warn('Play error:', e);
+  }
 
   // update recommendations
   fetchRecs(item.videoId);
